@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://dweilhjo1xy2v"]
+
+[ext_resource type="Script" path="res://scripts/grid.gd" id="1_avs7k"]
+[ext_resource type="Script" path="res://scripts/snake.gd" id="2_jjfje"]
+[ext_resource type="Script" path="res://scripts/spawner_food.gd" id="3_dp41i"]
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="4_o0sfl"]
+[ext_resource type="FontFile" uid="uid://bbk625yj2fplx" path="res://fonts/impact.ttf" id="4_r1w1e"]
+
+[node name="World" type="Node2D"]
+process_mode = 1
+
+[node name="grid" type="Node2D" parent="."]
+script = ExtResource("1_avs7k")
+
+[node name="snake" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_jjfje")
+
+[node name="spawner_food" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_dp41i")
+
+[node name="game_over" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("4_o0sfl")
+
+[node name="overshadow" type="ColorRect" parent="game_over"]
+offset_right = 800.0
+offset_bottom = 479.0
+color = Color(0, 0, 0, 0.301961)
+
+[node name="you_died" type="Label" parent="game_over"]
+offset_left = 60.0
+offset_top = 83.0
+offset_right = 424.0
+offset_bottom = 209.0
+theme_override_colors/font_color = Color(0.203922, 0.203922, 0.203922, 1)
+theme_override_fonts/font = ExtResource("4_r1w1e")
+theme_override_font_sizes/font_size = 100
+text = "You died."
+
+[node name="restart" type="Label" parent="game_over"]
+offset_left = 58.0
+offset_top = 209.0
+offset_right = 352.0
+offset_bottom = 264.0
+theme_override_colors/font_color = Color(0.203922, 0.203922, 0.203922, 1)
+theme_override_fonts/font = ExtResource("4_r1w1e")
+theme_override_font_sizes/font_size = 42
+text = "Press r to restart."
